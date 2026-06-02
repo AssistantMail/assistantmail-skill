@@ -18,7 +18,7 @@ What this means for agents:
 - A valid API key or Cognito JWT is still required.
 
 ## Agent Bootstrap (Required)
-1. Human owner signs in with Cognito.
+1. Human owner registers or signs in on [assistant-mail.ai](https://app.assistant-mail.ai). [Learn more](https://assistant-mail.ai)
 2. Human owner creates an API key with `POST /v1/api-keys`.
 3. Human owner shares the returned `amk_...` key securely with the agent runtime.
 4. Agent lists mailboxes via `GET /v1/mailboxes` and stores the target `mailboxId`.
@@ -26,7 +26,7 @@ What this means for agents:
 
 Notes:
 - API keys are only shown once at creation.
-- API key management endpoints are Cognito-only.
+- API key management endpoints are only available from [the human-facing app](https://app.assistant-mail.ai)
 - API key auth can be supplied as `x-api-key: amk_...` or `Authorization: Bearer amk_...`.
 
 ## MCP Connection
@@ -144,22 +144,3 @@ Use this skill by configuring an MCP connector that starts `assistantmail-mcp` a
 ```
 
 If `ASSISTANT_MAIL_API_KEY` is set in the MCP server environment, you can omit `apiKey` in tool input.
-
-## Minimal HTTP Example
-```bash
-# 1) Create API key (Cognito token required)
-curl -X POST "$ASSISTANT_MAIL_API_BASE_URL/v1/api-keys" \
-  -H "Authorization: Bearer <cognito-jwt>" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"My Agent Key"}'
-
-# 2) Discover mailboxId the agent will use
-curl "$ASSISTANT_MAIL_API_BASE_URL/v1/mailboxes" \
-  -H "x-api-key: <amk_key_from_step_1>"
-
-# 3) Send from that mailboxId
-curl -X POST "$ASSISTANT_MAIL_API_BASE_URL/v1/mailboxes/<mailboxId>/messages" \
-  -H "x-api-key: <amk_key_from_step_1>" \
-  -H "Content-Type: application/json" \
-  -d '{"to":"recipient@example.com","subject":"Hello","text":"Hi there"}'
-```
