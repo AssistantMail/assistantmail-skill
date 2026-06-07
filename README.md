@@ -82,6 +82,7 @@ The skill exposes the following operational tools:
 - `assistantmail_list_messages`
 - `assistantmail_get_message`
 - `assistantmail_send_email`
+- `assistantmail_reply_message` – Reply to an email the agent has received. Handles threading (In-Reply-To, References) automatically.
 - `assistantmail_delete_messages`
 - `assistantmail_get_usage`
 - `assistantmail_list_recipients`
@@ -141,6 +142,20 @@ Send email:
 		"to": "recipient@example.com",
 		"subject": "Hello",
 		"text": "Hi there",
+		"apiKey": "amk_..."
+	}
+}
+```
+
+Reply to a message:
+
+```json
+{
+	"tool": "assistantmail_reply_message",
+	"input": {
+		"mailboxId": "<mailbox-uuid>",
+		"messageId": "<message-uuid>",
+		"text": "Thanks for your email!",
 		"apiKey": "amk_..."
 	}
 }

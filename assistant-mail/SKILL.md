@@ -47,6 +47,7 @@ Notes:
   - `assistantmail_list_messages`
   - `assistantmail_get_message`
   - `assistantmail_send_email`
+  - `assistantmail_reply_message` – Reply to an email the agent has received. Handles threading (In-Reply-To, References) automatically.
   - `assistantmail_delete_messages`
   - `assistantmail_get_usage`
   - `assistantmail_list_recipients`
@@ -119,6 +120,18 @@ Use this skill by configuring an MCP connector that starts `assistantmail-mcp` a
     "to": "recipient@example.com",
     "subject": "Hello",
     "text": "Hi there",
+    "apiKey": "amk_..."
+  }
+}
+```
+
+```json
+{
+  "tool": "assistantmail_reply_message",
+  "input": {
+    "mailboxId": "<mailbox-uuid>",
+    "messageId": "<message-uuid>",
+    "text": "Thanks for your email!",
     "apiKey": "amk_..."
   }
 }
