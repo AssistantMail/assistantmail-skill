@@ -1,7 +1,7 @@
 ---
 name: assistant-mail
 title: Assistant Mail — agent email with allowlist & consent
-description: "Managed agent email for personal/small-team OpenClaw & Hermes — allowlist, consent, retention, send caps. Install: openclaw skills install @assistantmail/assistant-mail + MCP with ASSISTANT_MAIL_API_KEY. Free: 1 mailbox, 25/day — https://app.assistant-mail.ai/?utm_source=github&utm_medium=readme&utm_campaign=clawhub_readme_amplify. Outbound gated by allowlist; paid plans consent invites before send. mailboxId UUID + API key auth; Upgrade in-app · Docs https://assistant-mail.ai/docs. Listed on ClawHub — not an official OpenClaw endorsement."
+description: "Managed agent email for personal/small-team OpenClaw & Hermes — allowlist, consent, retention, send caps. Install: openclaw skills install @assistantmail/assistant-mail + MCP with ASSISTANT_MAIL_API_KEY. Free: 1 mailbox, 25 emails/day — https://app.assistant-mail.ai/?utm_source=github&utm_medium=readme&utm_campaign=clawhub_readme_amplify. Outbound gated by allowlist; paid plans consent invites before send. mailboxId UUID + API key auth; Upgrade in-app · Docs https://assistant-mail.ai/docs. Listed on ClawHub — not an official OpenClaw endorsement."
 homepage: https://assistant-mail.ai/docs
 ---
 # Assistant Mail — agent email with allowlist & consent
@@ -31,7 +31,7 @@ What this means for agents:
 - A valid API key or Cognito JWT is still required.
 
 ## Agent Bootstrap (Required)
-1. Human owner registers or signs in on [assistant-mail.ai](https://app.assistant-mail.ai/?utm_source=github&utm_medium=readme&utm_campaign=clawhub_readme_amplify) (Free: 1 mailbox, 25/day). [Docs](https://assistant-mail.ai/docs)
+1. Human owner registers or signs in on [assistant-mail.ai](https://app.assistant-mail.ai/?utm_source=github&utm_medium=readme&utm_campaign=clawhub_readme_amplify) (Free: 1 mailbox, 25 emails/day). [Docs](https://assistant-mail.ai/docs)
 2. Human owner creates an API key with `POST /v1/api-keys`.
 3. Human owner shares the returned `amk_...` key securely with the agent runtime.
 4. Agent lists mailboxes via `GET /v1/mailboxes` and stores the target `mailboxId`.
